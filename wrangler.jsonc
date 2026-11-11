@@ -1,0 +1,22 @@
+{
+  "name": "game-changer-atherious",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-11-10",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "ai": {"binding": "AI"},
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "game-changer-db",
+    "database_id": "REPLACE_WITH_D1_DATABASE_UUID"
+  }],
+  "vars": {
+    "AI_DEFAULT_MODEL": "@cf/openai/gpt-oss-120b",
+    "MAX_REQUESTS_PER_DAY": "25",
+    "MAX_REQUESTS_PER_MINUTE": "4"
+  }
+}

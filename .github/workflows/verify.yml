@@ -1,0 +1,31 @@
+name: Verify Game Changer
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Check JavaScript and run automated tests
+        run: npm run check
+      - name: Validate Cloudflare configuration structure
+        run: |
+          node --input-type=module -e '
+            import fs from "node:fs";
+            const c = JSON.parse(fs.readFileSync("wrangler.jsonc", "utf8"));
+            if (c.main !== "./src/index.js" || c.assets?.binding !== "ASSETS" || c.ai?.binding !== "AI" || !c.d1_databases?.some(db => db.binding === "DB")) {
+              throw new Error("Missing required Cloudflare Worker/AI/D1/static asset bindings");
+            }
+            console.log("Cloudflare bindings and config structure validated. Deployment credentials and real D1 UUID must be configured separately.");
+          '

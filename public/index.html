@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1d1434" />
+  <meta name="description" content="Game Changer by Atherious Labs — AI-powered planning, research and development workspace." />
+  <title>Game Changer — Atherious Labs</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <header class="brand-row">
+        <a class="brand-icon" href="/" data-link aria-label="Game Changer home"><svg viewBox="0 0 70 70"><defs><linearGradient id="logograd" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#c1a0ff"/><stop offset=".48" stop-color="#9f55ff"/><stop offset="1" stop-color="#6037e0"/></linearGradient></defs><path d="M31 5 6 57q-3 6 4 7h10l8-17h22l8 17h10q6-1 2-8L41 5q-4-7-10 0ZM39 25l7 15H31Z" fill="url(#logograd)"/><path d="m14 59 25-30 9 11L23 64H12Z" opacity=".6" fill="#caaaff"/></svg></a>
+        <a href="/" data-link class="brand-text"><strong>Game Changer</strong><small>By Atherious Labs</small></a>
+        <button class="icon-btn close-sidebar" id="closeSidebar" aria-label="Close navigation">×</button>
+      </header>
+      <nav class="primary-nav" aria-label="Main menu">
+        <button data-go="/" class="nav-item active" data-nav="home"><span data-icon="home"></span>Home</button>
+        <button data-go="/projects" class="nav-item" data-nav="projects"><span data-icon="layers"></span>Projects</button>
+        <button data-go="/research" class="nav-item" data-nav="research"><span data-icon="flask"></span>Research</button>
+        <button data-go="/plugins" class="nav-item" data-nav="plugins"><span data-icon="puzzle"></span>Plugins</button>
+        <button data-go="/usage" class="nav-item" data-nav="usage"><span data-icon="chart"></span>Usage</button>
+        <button data-go="/billing" class="nav-item" data-nav="billing"><span data-icon="credit-card"></span>Billing</button>
+        <button data-go="/profile" class="nav-item" data-nav="profile"><span data-icon="user"></span>Profile</button>
+      </nav>
+      <section class="side-actions" aria-label="Create">
+        <div class="side-section-title">NEW <span>START SOMETHING</span></div>
+        <button class="side-action" data-create="chat"><span data-icon="message-circle"></span> New Chat <kbd>Ctrl N</kbd></button>
+        <button class="side-action" data-create="plan"><span data-icon="clipboard"></span> New Plan</button>
+        <button class="side-action" data-create="research"><span data-icon="flask"></span> New Research <kbd>Ctrl R</kbd></button>
+      </section>
+      <section class="recent-section">
+        <div class="side-section-title">RECENTS <span><button class="link-tiny" id="searchRecent" type="button">Search</button><button class="link-tiny" id="viewArchive" type="button">Archive</button></span></div>
+        <div id="recentChats" class="recent-list"><span class="side-note">Loading conversations…</span></div>
+      </section>
+      <footer class="side-footer"><span class="brand-mini">A</span><span><strong>Atherious Labs</strong><small>Building the tech future with AI automation.</small></span><button class="icon-btn" id="sidebarSettings" title="Profile" aria-label="Open profile"><span data-icon="settings"></span></button></footer>
+    </aside>
+    <div class="mobile-shade" id="mobileShade"></div>
+    <div class="main-layout">
+      <header class="topbar"><div class="top-left"><button id="mobileMenu" class="icon-btn mobile-menu" aria-label="Open navigation"><span data-icon="menu"></span></button><div class="top-breadcrumb"><span class="breadcrumb-muted">Workspace</span><span class="crumb-divider">/</span><span id="pageBreadcrumb">Home</span></div></div><div class="top-right"><span class="model-status">Cloudflare Workers AI</span><button class="icon-btn search-top" id="openSearch" title="Search conversations (Ctrl+K)" aria-label="Search"><span data-icon="search"></span></button><button class="profile-circle" id="topProfile" aria-label="Profile">A</button></div></header>
+      <main id="main" tabindex="-1"><div class="initial-load"><div class="spinner"></div><span>Connecting to workspace…</span></div></main>
+      <div id="toast" role="status" class="toast" hidden></div>
+    </div>
+  </div>
+  <div id="dialogRoot"></div>
+</body>
+</html>
